@@ -6,4 +6,4 @@ import Card from './Card';
 import STORE from './store';
 import './index.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App storeData={STORE} />, document.getElementById('root'));
