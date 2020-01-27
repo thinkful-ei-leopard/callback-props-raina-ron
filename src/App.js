@@ -1,18 +1,16 @@
 import React from 'react';
 import List from './List';
-import Card from './Card';
-
-
+import './App.css';
 
 function App(props) {
-  const cards = [];
-  const cardIds = props.storeData.lists.map(list => {
-    for (let i = 0; i < props.storeData.lists.length; i++) {
-      return list.cardIds[i];
-    }
-      //return list.cardIds[0];
-      //return console.log(props.storeData.allCards[arr]);
-    });
+  // const cards = [];
+  // const cardIds = props.storeData.lists.map(list => {
+  //   for (let i = 0; i < props.storeData.lists.length; i++) {
+  //     return list.cardIds[i];
+  //   }
+  //     //return list.cardIds[0];
+  //     //return console.log(props.storeData.allCards[arr]);
+  //   });
   
   // console.log(`cardIDs: ${cardIds}`);
   // const cardArray = cardIds.map(element => {
