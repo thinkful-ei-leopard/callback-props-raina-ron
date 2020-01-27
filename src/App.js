@@ -6,8 +6,24 @@ import Card from './Card';
 
 function App(props) {
   const cards = [];
-  console.log(props.storeData);
-  
+  const cardIds = props.storeData.lists.map(list => {
+    return list.cardIds;
+  });
+  // console.log(cardIds);
+
+  for (let i = 0; i < cardIds.length; i++) {
+    for (let j = 0; j < cardIds[i].length; j++) {
+      
+    }
+  }
+
+  //  const cardArray = cardIds.find(element => {
+  //   return element === props.storeData.allCards[element];
+  // })
+
+  // console.log(cardArray);
+
+
   
   return (
     <main className="App">
@@ -16,9 +32,10 @@ function App(props) {
     </header>
     <div className="App-list">
 
-      <List></List>
+      
     {props.storeData.lists.map(list => {
-      return console.log(list.header);
+
+      return <List key={list.id} header={list.header} c></List>;
     })}
       {/* STORE.lists.forEach(list => {
         <List header={list.header}
