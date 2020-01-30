@@ -43,40 +43,33 @@ class App extends React.Component {
   handleAddRandomCard = (itemId) => {
     // generate a random card, add it to the state and appropriate list
     
-    console.log('random card generated');
-
-    // newCard looks like
-    // {id: "vd60", title: "Random Card vd60", content: "lorem ipsum"} 
     const newCard = newRandomCard();
-    console.log(itemId);
-
     const newList = this.state.store.lists.map(list => {
       // match the itemId to the list id
       // generate a new list and add the new random card to it
-      //
-
+      if(itemId === list.id) {
+        return {
+          ...list,
+          cardIds: [
+            ...list.cardIds, newCard.id
+          ] 
+        } 
+      }
+      return list;
+      // return an array which should look just like List
     });
 
-
-    // this.setState({
-    //   store: {
-    //     lists: newList,
-    //     allCards: ''
-    //          need ALL the cards in that list currently, then add newCard to it
-    //   }
-    // }) 
+    this.setState({
+      store: {
+        lists: newList,
+        allCards: {
+          ...this.state.store.allCards, 
+          [newCard.id]: newCard
+        }
+        //      need ALL the cards in that list currently, then add newCard to it
+      }
+    }) 
   };
-
-
-  // handleAddItem = (itemName) => {
-  //   const newItems = [
-  //     ...this.state.shoppingItems,
-  //     { name: itemName, checked: false }
-  //   ]
-  //   this.setState({
-  //     shoppingItems: newItems
-  //   })
-  // }
   
   render() {
     const { store } = this.state
