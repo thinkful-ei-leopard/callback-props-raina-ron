@@ -4,6 +4,11 @@ exports[`<Card /> renders this UI as expected 1`] = `
 <div
   className="Card"
 >
+  <button
+    type="button"
+  >
+    delete
+  </button>
   <h3 />
   <p />
 </div>

@@ -4,13 +4,22 @@ exports[`<List /> renders this UI as expected  1`] = `
 <section
   className="List"
 >
-  <header />
+  <header
+    className="List-header"
+  >
+    <h2 />
+  </header>
   <div
     className="List-cards"
   >
     <div
       className="Card"
     >
+      <button
+        type="button"
+      >
+        delete
+      </button>
       <h3>
         First card
       </h3>
@@ -18,12 +27,13 @@ exports[`<List /> renders this UI as expected  1`] = `
         lorem ipsum
       </p>
     </div>
-    <div
-      className="Card"
+    <button
+      className="List-add-button"
+      onClick={[Function]}
+      type="button"
     >
-      <h3 />
-      <p />
-    </div>
+      + Add Random Card
+    </button>
   </div>
 </section>
 `;
