@@ -9,10 +9,6 @@ import STORE from './store';
 // WHEN "add random" card is CLICKED
 // generate a random card, add it to the state and appropriate list
 
-// Refactor App component to use STATE instead of PROPS <========= DONE IN APP.JS
-
-
-
 const newRandomCard = () => {
   const id = Math.random().toString(36).substring(2, 4)
     + Math.random().toString(36).substring(2, 4);
@@ -36,8 +32,21 @@ class App extends React.Component {
     store: STORE
   };
 
-  handleDeletedCard = () => {
-    
+  handleDeletedCard = (clickedId) => {
+
+    const newCards = omit(this.state.store.allCards, clickedId);
+    // remove all cardIds from all lists that match clickedId
+    const newLists = this.state.store.lists.map(list => ({
+      ...list,
+      cardIds: list.cardIds.filter(id => id !== clickedId)
+    }));
+
+    this.setState({
+      store: {
+        lists: newLists,
+        allCards: newCards
+      }
+    })
   };
 
   handleAddRandomCard = (itemId) => {
@@ -66,7 +75,6 @@ class App extends React.Component {
           ...this.state.store.allCards, 
           [newCard.id]: newCard
         }
-        //      need ALL the cards in that list currently, then add newCard to it
       }
     }) 
   };
@@ -86,6 +94,7 @@ class App extends React.Component {
               header={list.header}
               cards={list.cardIds.map(id => store.allCards[id])}
               addRandomCard={this.handleAddRandomCard}
+              deleteCard={this.handleDeletedCard}
             />
           ))}
         </div>
