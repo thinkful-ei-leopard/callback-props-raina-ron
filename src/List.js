@@ -1,23 +1,37 @@
 import React from 'react';
-import Card from './Card';
+import Card from './Card'
 import './List.css';
 
-function List(prop) {
-  return (
-      <section className='List'>
-          <header>
-              {prop.header}
-          </header>
-          <div className='List-cards'>
-              {console.log(prop.cards)}
-              {prop.cards.map(card => {
-                  return <Card key={card.id} title={card.title} content={card.content} />;
-              })}
-            <Card key={prop.cards.id} title={prop.cards.title} content={prop.cards.content} />
-          </div>
-      </section>
-  );
+export default function List(props) {
+
+    
+        return (
+            <section className='List'>
+              <header className='List-header'>
+                <h2>{props.header}</h2>
+              </header>
+              <div className='List-cards'>
+                {props.cards.map((card) =>
+                  <Card
+                    key={card.id}
+                    id={card.id}
+                    title={card.title}
+                    content={card.content}
+                    
+                  />
+                )}
+                <button
+                  type='button'
+                  className='List-add-button'
+                  onClick={ () => props.addRandomCard(props.id)}
+                >
+                  + Add Random Card
+                </button>
+              </div>
+            </section>
+          )
 }
 
-
-export default List;
+List.defaultProps = {
+  addRandomCard: () => {}
+}
